@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Case</title>
+</head>
+<body>
+    <h1>Toggle Case of Letters</h1>
+    <textarea id="inputText" rows="4" cols="50" placeholder="Enter your text here"></textarea>
+    <br><br>
+    <button onclick="toggleCase()">Toggle Case</button>
+    <button onclick="resetInput()">Reset</button>
+    <p id="result" style="font-weight: bold; margin-top: 20px;"></p>
+
+    <script>
+        function toggleCase() {
+            const input = document.getElementById('inputText').value;
+            let toggledText = '';
+
+            for (const char of input) {
+                if (char === char.toUpperCase() && char !== char.toLowerCase()) {
+                    toggledText += char.toLowerCase();
+                } else if (char === char.toLowerCase() && char !== char.toUpperCase()) {
+                    toggledText += char.toUpperCase();
+                } else {
+                    toggledText += char; // Non-alphabetic characters remain unchanged
+                }
+            }
+
+            document.getElementById('result').textContent = `Toggled Case: ${toggledText}`;
+        }
+
+        function resetInput() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('result').textContent = '';
+        }
+    </script>
+</body>
+</html>
